@@ -9,8 +9,20 @@ const Index = () => {
 
   useEffect(() => {
     fetch("http://localhost:3001/api/message")
-      .then((response) => response.json())
-      .then((data) => setMessage(data.message));
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setMessage(data.message);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+        setMessage("Failed to load message");
+      });
   }, []);
 
   return (
