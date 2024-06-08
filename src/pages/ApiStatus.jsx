@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Text, VStack } from "@chakra-ui/react";
+import Navigation from "../components/Navigation.jsx";
 
 const ApiStatus = () => {
   const [status, setStatus] = useState("Checking...");
@@ -23,6 +24,7 @@ const ApiStatus = () => {
 
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+      <Navigation />
       <VStack spacing={4}>
         <Text fontSize="2xl">API Status</Text>
         <Text>{status}</Text>
